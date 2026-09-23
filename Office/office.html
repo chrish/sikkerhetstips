@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sikkerhet på hjemmekontoret</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../autoplay.css">
+<!-- The following style block is only for the home office page.
+<style>
+  .stage {
+    background-image: url("home.png");
+    background-size: cover;
+    background-position: center top;
+    margin-top: 0;
+  }
+  .artboard {
+    width: 100vh;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+</style> -->
+<!-- Fallback import map so bare imports resolve if served unbundled (e.g., raw on GitHub Pages) -->
+<script type="importmap">
+{
+  "imports": {
+    "@floating-ui/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4/+esm"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="textcontainer">
+          <h1>På kontoret</h1>
+          <p>På kontoret deler du en god del informasjon med kollegaer. Det er derfor viktig å sikre at denne informasjonen er beskyttet og ikke kommer i feil hender. </p>
+      </div>
+  <div class="stage" id="stage" aria-live="polite">
+    <!-- Artboard defines a fixed coordinate system for hotspots -->
+    <div class="artboard" id="artboard" role="img" aria-label="Home office infographic">
+
+  <!-- Overlay is where hotspots live in percentage space (0–100) -->
+      <div class="overlay" id="overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="dialog" aria-hidden="true">
+    <div data-arrow></div>
+  </div>
+
+  <a class="back-link" href="../index.html">← Meny</a>
+
+  <nav aria-label="Bytt side">
+    <a class="page-nav prev" href="../Home/home-office.html" title="Hjemmekontoret" aria-label="Forrige side: Hjemmekontoret">←</a>
+    <a class="page-nav next" href="../Travelling/travelling.html" title="På reise" aria-label="Neste side: På reise">→</a>
+  </nav>
+
+  <script type="module" src="script-office.js"></script>
+
+</body>
+</html>

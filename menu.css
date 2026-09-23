@@ -1,0 +1,140 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #222;
+  background: #D6C095;
+  background-image: url("../header_bg.png");
+}
+
+:where(img) { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid #0a66ff;
+  outline-offset: 3px;
+}
+
+:root {
+  --gap: 8px;
+  --glass: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+/* Same glass header as the scene pages, but in flow rather than absolute */
+#textcontainer {
+  width: min(80svw, 1100px);
+  margin: 0 auto;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  margin: 0 0 var(--gap) 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, .75);
+}
+
+#textcontainer p {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, .75);
+  text-wrap: pretty;
+}
+
+.menu {
+  width: min(80svw, 1100px);
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-body { padding: 16px 18px 20px; }
+
+.card h2 {
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  margin: 0 0 4px 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, .75);
+}
+
+.card-body p {
+  font-size: 1rem;
+  text-wrap: pretty;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card:hover, .card:focus-visible { transform: none; }
+}
+
+@media screen and (max-width: 416px) {
+  #textcontainer, .menu { width: 100svw; }
+  .menu { padding-inline: 12px; }
+
+.page-logo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  width: clamp(80px, 14vw, 180px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* On very narrow screens the logo drops below the text instead of squeezing it */
+@media (max-width: 520px) {
+  #textcontainer { grid-template-columns: 1fr; }
+  .page-logo {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    margin-top: 4px;
+  }
+}
+}

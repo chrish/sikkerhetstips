@@ -1,0 +1,62 @@
+/* Autoplay controls, shared by all three scene pages.
+   Kept in one file so the three near-identical styles.css copies don't grow a
+   fourth duplicate of the same rules. */
+
+.autoplay {
+  position: fixed;
+  right: calc(12px + env(safe-area-inset-right, 0px));
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+}
+
+/* Same glassy pill as .back-link in each scene's styles.css */
+.autoplay-btn {
+  padding: 8px 14px;
+  font: 500 1rem/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #222;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.autoplay-btn:hover { background: rgba(255, 255, 255, 0.55); }
+.autoplay-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* Active mode picks up the same blue as the hotspots */
+.autoplay-btn.is-on {
+  color: #fff;
+  background: #0000ff;
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 255, 0.35);
+}
+.autoplay-btn.is-on:hover { background: #1a1aff; }
+
+/* The hotspot autoplay is currently reading. .hotspot already carries
+   translate(-50%,-50%) for centring, so re-declare it alongside the scale. */
+.hotspot.is-active {
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 0 6px rgba(0, 0, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hotspot.is-active { animation: hotspot-pulse 1.8s ease-out infinite; }
+  @keyframes hotspot-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(0, 0, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.35); }
+    70%  { box-shadow: 0 0 0 16px rgba(0, 0, 255, 0), 0 2px 8px rgba(0, 0, 0, 0.35); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 0, 255, 0), 0 2px 8px rgba(0, 0, 0, 0.35); }
+  }
+}
+
+/* Shrink so the row still clears the bottom-left ← Meny link on narrow screens.
+   The ← → page-nav arrows sit at top: 50%, so they never collide with this. */
+@media (max-width: 520px) {
+  .autoplay { gap: 6px; }
+  .autoplay-btn { padding: 6px 10px; font-size: 0.85rem; }
+}

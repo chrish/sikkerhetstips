@@ -1,0 +1,21 @@
+{
+  "name": "heimakontor-tooltips",
+  "version": "1.0.0",
+  "description": "Hotspot tooltip demo using Floating UI",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "fsevents@2.3.3": true
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sikkerhet på hjemmekontoret</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../autoplay.css">
+<!-- Fallback import map so bare imports resolve if served unbundled (e.g., raw on GitHub Pages) -->
+<script type="importmap">
+{
+  "imports": {
+    "@floating-ui/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4/+esm"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="textcontainer">
+          <h1>På reise</h1>
+          <p>På reise jobber du i omgivelser du ikke kontrollerer selv – på hotell, i lobbyen eller på flyplassen. Da er det ekstra viktig å passe på både enhetene og informasjonen din.</p>
+      </div>
+  <div class="stage" id="stage" aria-live="polite">
+    <!-- Artboard defines a fixed coordinate system for hotspots -->
+    <div class="artboard" id="artboard" role="img" aria-label="Travelling infographic">
+
+  <!-- Overlay is where hotspots live in percentage space (0–100) -->
+      <div class="overlay" id="overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="dialog" aria-hidden="true">
+    <div data-arrow></div>
+  </div>
+
+  <a class="back-link" href="../index.html">← Meny</a>
+
+  <nav aria-label="Bytt side">
+    <a class="page-nav prev" href="../Office/office.html" title="På kontoret" aria-label="Forrige side: På kontoret">←</a>
+    <a class="page-nav next" href="../Home/home-office.html" title="Hjemmekontoret" aria-label="Neste side: Hjemmekontoret">→</a>
+  </nav>
+
+  <script type="module" src="script-travelling.js"></script>
+
+</body>
+</html>
